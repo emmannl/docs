@@ -140,7 +140,7 @@ Commonly requested of professionals and gamers alike is the ability to specify a
 
 ## CUDA SDK / Tensorflow Packaging
 
-Many users System76's customers are using Pop!_OS for scientific workloads, and therefore making the [CUDA SDK] and [Tensorflow] accessible in Pop!_OS is a significant advantage that enables them to get up and running with a development environment quick and painless.
+Many of System76's customers are using Pop!_OS for scientific workloads, and therefore making the [CUDA SDK] and [Tensorflow] accessible in Pop!_OS is a significant advantage that enables them to get up and running with a development environment quickly and painlessly.
 
 [CUDA SDK]: https://support.system76.com/articles/cuda/
 [TensorFlow]: https://support.system76.com/articles/install-tensorflow/
