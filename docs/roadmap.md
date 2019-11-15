@@ -26,11 +26,42 @@ the feature was implemented during. When a feature is listed as being implemente
 release cycle, this means that it was completed before 19.04 was released, and thus was available
 on release for 19.04.
 
+### Pop!_Shell
+
+* Advanced window tiling
+* Setting to launch applications tiled
+* Keyboard shortcuts update for window navigation and movement
+* Quick launcher for launching apps and switching windows
+
+### Flatpak
+
+* Flatpak support with the Flathub repository
+* Flatpak repo support in Repoman
+* Pop!_OS Repo as 1st party in Repoman
+
+### Hybrid Graphics
+
+* Switch to specify running applicatiosn on the discrete GPU in GNOME Settings
+* Patch Steam and other Pop maintained supported applications with the graphics preference description in the desktop file
+* Documentation to help the community identify apps that don't support hybrid graphics and details on how developers can add support
+* Add right click app icon option > Application Settings
+
 ### GNOME Online Accounts
 
 * Add additional providers to GNOME Initial Setup
 * Add CalDav and CardDav providers
 * Patch GNOME Calendar and GNOME Contacts for the new providers
+
+### Pop!_OS General
+
+* Change LSB descriptions to Pop for 20.04
+* Smooth codec installation
+* Remove System76 driver for System76 hardware customers. Integrate necessary information and features into the desktop.
+* Update Recovery Partition and Refresh OS features in GNOME Settings > About
+* Pop features in GNOME Settings > About for the new GNOME 3.36 panel design
+* Tensorman in 18.04
+* NVENC support in ffmpeg
+* Transition Thelio Io firmware updates to LVFS
 
 ### Installer
 
@@ -47,6 +78,7 @@ on release for 19.04.
 
 ### System76 Power
 
+* System76 Power settings in GNOME Control Center
 * Configurable power profiles
 * Custom commands for power profile switches
 * Additional power-saving features enabled by default
