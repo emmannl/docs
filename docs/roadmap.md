@@ -41,8 +41,8 @@ on release for 19.04.
 
 ### Hybrid Graphics
 
-* Switch to specify running applicatiosn on the discrete GPU in GNOME Settings
-* Patch Steam and other Pop maintained supported applications with the graphics preference description in the desktop file
+* Switch to specify running applications on the discrete GPU in GNOME Settings
+* Patch Steam and other Pop maintained supported applications with a graphics preference description in the desktop file
 * Documentation to help the community identify apps that don't support hybrid graphics and details on how developers can add support
 * Add right click app icon option > Application Settings
 
