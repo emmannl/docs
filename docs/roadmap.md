@@ -22,9 +22,9 @@ point release. When features are completed, they are added to the latest "stable
 
 These are features which we would either like to, or are already in the process of, implementing.
 As these are completed, they will be listed underneath a release cycle, indicating which cycle
-the feature was implemented during. When a feature is listed as being implemented during the 19.04
-release cycle, this means that it was completed before 19.04 was released, and thus was available
-on release for 19.04.
+the feature was implemented during. When a feature is listed as being implemented during the 20.04
+release cycle, this means that it was completed before 20.04 was released, and thus was available
+on release for 20.04.
 
 ### Pop!_Shell
 
@@ -111,9 +111,9 @@ for the following features would be useful:
 
 ---
 
-## Pop!_OS 19.04 (current development)
+## Pop!_OS 19.04
 
-Pop!_OS 19.04 is scheduled to release on April 18th, 2019.
+Pop!_OS 19.04 was released on April 18th, 2019.
 
 ### Installation
 
