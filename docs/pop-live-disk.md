@@ -13,6 +13,8 @@ Pop!_OS is remarkably flexible. You can run a full version of Pop!_OS from a USB
 
 A live disk is a handy tool to have around! If you are running Pop!_OS 18.04 then you have a recovery partition which is just like a live disk. You can access this by rebooting your laptop/desktop and tapping the ESC or Space key. There is a menu entry called 'Pop!_OS Recovery', choose that with the arrow keys and then press enter.
 
+Not running Pop!_OS yet? Take a [look here](https://support.system76.com/articles/live-disk/) for instructions on creating a Live USB on other OSes.
+
 ## Make Bootable drive
 
 In order to install Pop!_OS, first download the .iso image. This is a disk image with the operating system and installer on it. The download for [Pop!_OS here](http://pop.system76.com). Just click the link and the download should begin!
