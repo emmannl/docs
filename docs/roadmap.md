@@ -26,18 +26,43 @@ the feature was implemented during. When a feature is listed as being implemente
 release cycle, this means that it was completed before 20.04 was released, and thus was available
 on release for 20.04.
 
-### Pop!_Shell
+### Async Fetcher
 
-* Advanced window tiling
-* Setting to launch applications tiled
-* Keyboard shortcuts update for window navigation and movement
-* Quick launcher for launching apps and switching windows
+A new Rust crate built around asynchronous I/O, using Rust's async / await syntax. This project will be used across all Pop!_OS and System76 projects for caching, fetching, and validating files fetched from HTTP/S file servers. Features shall include:
 
-### Flatpak
+* Built around `futures03` streams
+* Concurrently fetching multiple files at the same time
+* Using multiple concurrent connections per file (as parts) to increase throughput
+* Using multiple mirrors to fetch different parts of the same file from
+* Defining minimum and maximum part size
+* Definining maximum requests per per, and maximum number of files to fetch concurrently
+* Checking modified timestamps and content length to determine when fetching is required
+* Optional checksum validation (MD5 / SHA256)
+* Cancellation, timeout, and retry handling
+* Resumable downloads, when a download is interrupted
+* Command line client with IPC and RPC support, w/ process isolation support
 
-* Flatpak support with the Flathub repository
-* Flatpak repo support in Repoman
-* Pop!_OS Repo as 1st party in Repoman
+The current goal is to use this for:
+
+* Rapidly synchronizing apt source lists
+* Speedily fetching & validating debian packages
+* Fetching the recovery ISO, which would benefit from resumable downloads
+* Creating a useful tool for our open source community
+
+### Flatpak Support
+
+With the open source ecosystem increasingly relying upon Flatpak as a distribution model by application developers on the Linux desktop, it is important to bring that support to Pop!_OS out of the box. This entails:
+
+* Having Flatpak installed by default, with the Flathub source repository
+* Adding Flatpak repo support in Repoman, our tool for managing apt repositories
+* Ensuring that the Pop!_OS Repo is listed as a 1st party in Repoman
+* Updating the Pop!_Shop to bring in Flatpak support from elementary
+* Fixing the display of app sources so that Pop's repository has higher priority
+
+### GNOME Online Accounts
+
+* Add additional providers to GNOME Initial Setup (CalDav & CardDav)
+* Patch GNOME Calendar and GNOME Contacts for these new providers
 
 ### Hybrid Graphics
 
@@ -45,23 +70,6 @@ on release for 20.04.
 * Patch Steam and other Pop maintained and supported applications with a graphics preference description in the desktop file
 * Documentation to help the community identify apps that don't support hybrid graphics and details on how developers can add support
 * Add right click app icon option > Application Settings
-
-### GNOME Online Accounts
-
-* Add additional providers to GNOME Initial Setup
-* Add CalDav and CardDav providers
-* Patch GNOME Calendar and GNOME Contacts for the new providers
-
-### Pop!_OS General
-
-* Change LSB descriptions to Pop for 20.04
-* Smooth codec installation
-* Remove System76 driver for System76 hardware customers. Integrate necessary information and features into the desktop.
-* Update Recovery Partition and Refresh OS features in GNOME Settings > About
-* Pop features in GNOME Settings > About for the new GNOME 3.36 panel design
-* Tensorman in 18.04
-* NVENC support in ffmpeg
-* Transition Thelio Io firmware updates to LVFS
 
 ### Installer
 
@@ -76,38 +84,158 @@ on release for 20.04.
 * LVM snapshotting support
 * Support for ZFS and its special features
 
-### System76 Power
+### Packaging
 
-* System76 Power settings in GNOME Control Center
-* Configurable power profiles
-* Custom commands for power profile switches
-* Additional power-saving features enabled by default
-* Power profiles for non-Intel processors
-* Power profiles for AMD and NVIDIA graphics
+* Move away from Launchpad and host our own apt repositories
+* Rewrite our packaging CI in Rust
+* Support periodic watching of repositories for commits to be built
+* Support distributing package builds to multiple build servers
+* Possibly support a web interface for managing the repository and build servers
+
+### Pop!_OS General
+
+* Add changelogs to projects using a changelog generator based on [conventional commits] (we may have to build this tool ourselves)
+* Change LSB descriptions to Pop for 20.04
+* Smooth codec installation
+* Remove System76 driver for System76 hardware customers. Integrate necessary information and features into the desktop.
+* Pop features in GNOME Settings > About for the new GNOME 3.36 panel design
+* Transition Thelio I/O firmware updates to LVFS
+
+[conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
+
+### Pop!_Shell
+
+The #1 competitor to GNOME Shell for our users is i3wm. Tiling window management in GNOME Shell is currently really bad, but we can fix this with:
+
+* Advanced window tiling
+* Setting to launch applications tiled
+* Keyboard shortcuts update for window navigation and movement
+* Quick launcher for launching apps and switching windows
+
+### Pop!_Support
+
+Create a utility for our support team and users, which contains:
+
+* Common repair functions for automatically repair common issues
+* Automatic mounting and chrooting for repairing an install
+* Generation of logs to send to the support team
+
+### Pop!_Upgrade
+
+* Add support for updating the recovery partition
+* Add support for refreshing the OS from GNOME Settings
+* Reduce the bandwidth required to update the recovery partition
+* Switch to using asynchronous I/O for all network connections
+* Replace all usage of `futures01` & combinators with `futures03` & async/await
+* Improve handling of network timeouts by integrating our `async-fetcher` crate
+* Upgrade to `dbus-rs` 0.7, and investigate handling requests in an async fashion
 
 ### Popsicle
 
 * Support for creating bootable Windows 10 drives
 * Imaging from an existing drive to many other drives
-* Performing I/O with `std::future::Future` when it is stable
+* Updating the GTK code to use new practices that we've developed
+* Add support for asynchronous I/O in the GTK frontend
+* Change the way the GTK frontend works so that Flatpak can be supported
 * Internationalization support, with [Project Fluent](https://projectfluent.org/).
 
-### Pop Upgrade
+### System76 Power
 
-* Reduce the bandwidth required to update the recovery partition
-* Support fetching apt URIs without help from `apt-get`
-* Improved detection of packages and possible package-conflicts
+* System76 Power settings in GNOME Control Center
+* Configurable power profiles in a simple configuration format
+* Support for handling AC plug events, with configurable thresholds
+* Power profiles for non-Intel processors
+* Investigate handling DBUS requests in an async fashion
+* AMD integrated / NVIDIA dedicated graphics switching
+* AMD integrated / AMD dedicated graphics switching
+* Intel integrated / AMD dedicated graphics switching
+
+### Tensorman
+
+* Backport Docker and Tensorman to 18.04 LTS
+* AMD GPU support with ROCm (requires packaging ROCm?)
+
+---
+
+## Pop!_OS 20.04
+
+These are features which have been implemented during the 19.10 release cycle, leading up to 20.04.
+
+### Contributions to upstream projects
+
+#### Rust Crates
+
+Contributions to Rust crates which we rely on in our software
+
+* [futures-codec](https://github.com/matthunz/futures-codec/pull/36): Added `Decoder::decode_eof` method
+* [http-client](https://github.com/http-rs/http-client/pull/14): Fixed an issue with GET requests sending an empty body
+* [pbr](https://github.com/a8m/pb/pull/92): Made the `MultiBar` thread-safe, enabling bars to be added dynamically over time
 
 ### Packaging
 
-Rethinking the `debrep` approach may be ideal for the future. A redesigned `debrep` with support
-for the following features would be useful:
+* Packaged the [NVIDIA Codec SDK](https://github.com/pop-os/nvidia-video-codec)
+* ffmpeg was rebuilt with NVENC support, enabling NVENC in OBS
+* Chromium is now being built from Debian sources with VAAPI HW decode support
 
-* Mirroring apt repositories when defining their URL in a TOML spec.
-* A database for tracking which packages have been built, and which packages are to be added.
-* A packaging CI for watching changes to git repositories, automatically building
-  them as new commits are made, and uploading them to the repository.
-* Possibly a simple web UI for internally managing a repository, similar to Launchpad.
+### Popsicle
+
+* The CLI has been rewritten around asynchronous I/O, which significantly reduced memory use.
+  * We previously used one thread per USB device being flashed -- now we only need one
+  * Which required 68 MiB to flash 3 devices, instead of the 4 MiB today
+* The CLI now outputs a stream of machine-readable RON events when stdout is not a TTY.
+
+### Pop Upgrade
+
+* Moved the GTK widget from the Info Overview to a new Upgrade panel in GNOME Settings
+* Added a refresh OS section to the upgrade panel
+* Support for recovery upgrades
+* Support for cancelling a recovery upgrade
+* Misc. improvements to fix common issues and increase success rates
+
+### Rust Crate Releases
+
+New Rust crates that we've developed and released
+
+* [as-result](https://github.com/pop-os/as-result): AsResult / IntoResult traits, with ExitStatus handling
+* [async-fetcher](https://github.com/pop-os/async-fetcher): asynchronous file fetcher
+* [deb-changelog](https://github.com/pop-os/deb-changelog): Zero-copy parser and futures codec for debian's changelog format
+* [deb-control](https://github.com/pop-os/deb-control): Zero-copy parser and futures codec for debian's control file format, used in most Debian files
+* [deb-diversion](https://github.com/pop-os/deb-diversion): Futures codec for Debian's dpkg diversion file
+* [gtk-extras](https://github.com/pop-os/gtk-extras): Common GTK widgets, functions, and behaviors across our GTK projects
+* [pidfd](https://github.com/pop-os/pidfd): Linux (>= 5.3) process ID file descriptor support
+* [srmw](https://github.com/pop-os/srmw): asynchronous single-reader, multi-writer
+* [usb-disk-probe]: asynchronous USB disk device prober for Linux
+* [fd-reactor]: A simple async reactor for `libc::poll`ing file descriptors and waking up task executors
+
+### System76 Power
+
+* Upgraded from `dbus-rs` 0.6 to 0.7 (adds support for async I/O)
+* Support for hybrid graphics switching, to keep the GPU powered off until an application requests it
+
+---
+
+## Pop!_OS 19.10
+
+Pop!_OS 19.10 was released on October 22nd, 2019.
+
+### Packaging
+
+* The `linux-system76` package now provides a kernel that is shared between all supported releases
+
+### Pop Upgrade
+
+The upgrade daemon was released in the days leading up to the 19.10 release. The features of the
+upgrade daemon include:
+
+* A DBus daemon for carrying out checking for release upgrades and setting them up
+* A systemd offline-update service which the upgrade daemon prepares for the next boot
+* A desktop notification service which runs as the user, to provide desktop notifications
+* A CLI and GTK frontend for interacting with the DBus daemon
+* Integration inside of GNOME Settings for the GTK widget
+
+### System76 Power
+
+* Support for NVIDIA hybrid graphics was added to the daemon
 
 ---
 
