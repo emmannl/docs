@@ -35,7 +35,7 @@ With encryption enabled by default, and reporting through Ubuntu disabled, Pop!_
 
 ## Recovery Partition
 
-The recovery partition on this operating system is a full copy of the Pop!_OS installation disk. It can be used exactly the same as if a live disk copy of Pop!_OS was booted from a USB drive. Using the recovery partition, the installed operating system can be repaired or reinstalled. Supported features currently are refresh and clean installs. Refresh installs erase the previously-installed OS while preserving your data stored in the home folder. Fresh installs erase and repartition an entire drive, giving you an install that is identical to what you would get from the factory.
+The recovery partition on this operating system is a full copy of the Pop!_OS installation disk. It can be used exactly the same as if a live disk copy of Pop!_OS was booted from a USB drive. Using the recovery partition, the installed operating system can be repaired or reinstalled. Supported features currently are "refresh" and "clean" installs. "Refresh installs" erase the previously-installed OS while preserving your data stored in the home folder. "Fresh installs" erase and repartition an entire drive, giving you an install that is identical to what you would get from the factory.
 
 > Refresh Installs are only available on a new install of either Pop!_OS 19.04 or 18.04 (not through upgrading). In the future, it will be possible to initiate a refresh install from within GNOME Settings, if you have a recovery partition. Refresh installs may also be performed when booting a copy of Pop!_OS from a USB drive.
 
@@ -65,7 +65,7 @@ Pop!_OS includes a selection of apps intended to be comprehensive, but relativel
 
 ## Third Party Apps
 
-With the desktop as our focus, and as Linux desktop users ourselves, we realize that it's important to include popular applications and tools in our repositories so that can be readily installed on the system without needing third party PPAs. Developers will see that we provide popular tools such as [DBeaver], [Atom], [VS Code], [Slack], and [Mattermost] are readily available in the Shop.
+With the desktop as our focus, and as Linux desktop users ourselves, we realize that it's important to include popular applications and tools in our repositories so these can be readily installed on the system without needing third party PPAs. Developers will see that we provide popular tools such as [DBeaver], [Atom], [VS Code], [Slack], and [Mattermost] all readily available in the Shop.
 
 [DBeaver]: https://dbeaver.io/
 [Atom]: https://atom.io/
@@ -75,7 +75,7 @@ With the desktop as our focus, and as Linux desktop users ourselves, we realize 
 
 ## Enabling Linux Gaming
 
-System76 hardware is excellent for gaming with, and many of our users are Linux gamers. Vulkan drivers and libraries are installed by default, and the NVIDIA ISO comes with the latest NVIDIA driver installed by default. As new NVIDIA drivers are relased, they are packaged so that you will receive them as regular OS updates. Gamers will also find [Discord], [Lutris], [GameHub], and improved packaging of [Steam] including in our software repositories, and installable through the Shop.
+System76 hardware is excellent for gaming with, and many of our users are Linux gamers. Vulkan drivers and libraries are installed by default, and the NVIDIA ISO comes with the latest NVIDIA driver installed by default, too. As new NVIDIA drivers are relased, they are packaged so that you will receive them as regular OS updates. Gamers will also find [Discord], [Lutris], [GameHub], and improved packaging of [Steam] included in our software repositories, and installable through the Shop.
 
 [Discord]: https://discordapp.com/
 [Lutris]: https://lutris.net/
@@ -85,11 +85,11 @@ System76 hardware is excellent for gaming with, and many of our users are Linux 
 ## Custom Keyboard Shortcuts
 
 After conducting a study of Ubuntu and GNOME keyboard shortcuts, we decided to make some shortcuts more efficient for common user behaviors. The shortcut for switching workspaces, for example, is <kbd>Super</kbd> + <kbd>Arrow</kbd> <kbd>Up</kbd> or <kbd>Down</kbd>.
-[See all keyboard shortcuts](https://pop.system76.com/docs/keyboard-shortcuts/)
+[See all keyboard shortcuts](https://pop.system76.com/docs/keyboard-shortcuts/).
 
 ## Faster EFI Boots
 
-Most Linux distributions use a bootloader called GRUB, which is essentially a miniature operating system that loads other operating systems. With the advent of EFI firmware and GUID partition tables, it's no longer necessary to boot into a complex bootloader in order to support multi-boot configurations. [systemd-boot] is a simple UEFI boot manager based on the [Boot Loader Specification], which enables the Linux kernel to boot itself with a fraction of the time required by GRUB, and with an simpler configuration format.
+Most Linux distributions use a bootloader called GRUB, which is essentially a miniature operating system that loads other operating systems. With the advent of EFI firmware and GUID partition tables, it's no longer necessary to boot into a complex bootloader in order to support multi-boot configurations. [systemd-boot] is a simple UEFI boot manager based on the [Boot Loader Specification], which enables the Linux kernel to boot itself in a fraction of the time required by GRUB, and with a simpler configuration format.
 
 > We also developed [kernelstub] as a means to managing the boot loader entries, so that it's easier to add and remove kernel options in the entries that systemd-boot reads at startup.
 
@@ -128,13 +128,13 @@ A highly requested feature, Pop!_OS includes the [Do Not Disturb] extension by d
 
 ## Slim and Dark Theme Variants
 
-Many people prefer the option of toggling between a dark and light theme, and many also prefer to have as minimal spacing around elements in their theme, so we've designed dark and slim variants of the Pop theme, and included toggles in GNOME Settings to make it easier to switch between these variants, without the need to do so through GNOME Tweak Tool.
+Many people prefer the option of toggling between a dark and light theme, and many also prefer to have as minimal spacing around elements in their theme, so we've designed dark and slim variants of the Pop theme, and included toggles in GNOME Settings to make it easier to switch between these variants, without the need to do so through the GNOME Tweak Tool.
 
 ![Theme switcher](/images/difference-between-pop-ubuntu/theme-variants.png)
 
 ## Toggling Mouse Acceleration
 
-Commonly requested of professionals and gamers alike is the ability to specify a flat mouse acceleration profile. This feature, previously hidden away in GNOME Tweak Tool, is front and center in Pop!_OS in the mouse settings panel. With mouse acceleration set to a flat acceleration profile, precision of inputs is improved.
+Commonly requested of professionals and gamers alike is the ability to specify a flat mouse acceleration profile. This feature, previously hidden away in the GNOME Tweak Tool, is front and center in Pop!_OS in the mouse settings panel. With mouse acceleration set to a flat acceleration profile, precision of inputs is improved.
 
 ![Mouse acceleration](/images/difference-between-pop-ubuntu/mouse-acceleration.png)
 
@@ -149,7 +149,7 @@ Many of System76's customers are using Pop!_OS for scientific workloads, and the
 
 ## Official Community Resources
 
-Our desktop community is critical to us, as the Linux desktop is our main focus for Pop!_OS, and therefore it is important for our community to be able to discuss the Linux desktop, and Pop!_OS itself. Anyone is free to join the official [Pop!_OS Mattermost instance], where you can communicate with others in Pop!_OS community in realtime. This can be used as a venue for asking quick questions about Pop!_OS.
+Our desktop community is critical to us, as the Linux desktop is our main focus for Pop!_OS, and therefore it is important for our community to be able to discuss the Linux desktop, and Pop!_OS itself. Anyone is free to join the official [Pop!_OS Mattermost instance], where you can communicate with others in the Pop!_OS community in realtime. This can be used as a venue for asking quick questions about Pop!_OS.
 
 Issue reports and feature requests are better created in the [appropriate repositories on GitHub], using the [Pop repository] as the general place for all issues which do not fall under a specific project. However, note that any issues regarding System76 hardware are better created as support tickets in your System76 account, as that's where you can reach System76 support.
 
